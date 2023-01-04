@@ -14,6 +14,8 @@ womenRoute.get("/", async (req, res)=>{
 
 //63982f243369df9a18805164   detail
 
+womenRoute.use(authentication);
+
 womenRoute.get("/prodectdetails/:id", async (req, res)=>{
     let qur = req.params.id
     // let size = qur.size || 5;
@@ -22,7 +24,7 @@ womenRoute.get("/prodectdetails/:id", async (req, res)=>{
     res.send(data)
 })
 
-womenRoute.use(authentication)
+
 womenRoute.use(adminmiddleware)
 womenRoute.post("/post", async (req, res)=>{
     const payload = req.body
