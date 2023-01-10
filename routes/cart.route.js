@@ -71,7 +71,7 @@ cartRoute.delete("/singledelete/:id",CatdAuth, async(req,res)=>{
   let arr =  mycart.products
   
   let newarr = arr.filter((el)=>{
-      return el.product_id !== payload
+      return el.product_id !== payload.id
       
   })
   
