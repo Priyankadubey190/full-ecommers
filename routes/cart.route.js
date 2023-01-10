@@ -61,7 +61,7 @@ cartRoute.post("/:id",CatdAuth, async(req,res)=>{
 })
 
 ////////////////////////////////
-cartRoute.delete("/singledelete/:id",CatdAuth, async(req,res)=>{
+cartRoute.patch("/singledelete/:id",CatdAuth, async(req,res)=>{
   try{
    let id = req.params.id;
    let payload = req.body
