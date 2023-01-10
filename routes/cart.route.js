@@ -60,6 +60,34 @@ cartRoute.post("/:id",CatdAuth, async(req,res)=>{
     }
 })
 
+////////////////////////////////
+cartRoute.delete("/singledelete/:id",CatdAuth, async(req,res)=>{
+  try{
+   let id = req.params.id;
+   let payload = req.body
+   let mycart = await CartModel.findById({_id:id})
+   
+   //console.log("py",mycart.products)
+  let arr =  mycart.products
+  
+  let newarr = arr.filter((el)=>{
+      return el.product_id !== payload
+      
+  })
+  
+
+      
+   let mydata = await CartModel.findByIdAndUpdate({_id:id},{products:newarr}, {new:true})
+
+   res.send(mydata)
+  }
+  catch(err){
+      console.log("cart",err)
+  }
+})
+
+/////
+
 cartRoute.delete("/delete/:id", CatdAuth, async(req,res)=>{
   try{
     let id = req.params.id;
