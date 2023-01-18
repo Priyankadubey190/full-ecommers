@@ -8,8 +8,11 @@ womenRoute.get("/", async (req, res)=>{
     let qur = req.query
     let size = qur.size || 5;
     let page = qur.page || 1;
+    
+    const datalen = await WomenModel.find(qur)
+    const p = Math.ceil(datalen/5)
     const data = await WomenModel.find(qur).limit(size).skip((page-1)*size)
-    res.send(data)
+    res.send({data,datalength:p})
 })
 
 //63982f243369df9a18805164   detail
